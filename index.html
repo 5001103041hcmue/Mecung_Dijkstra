@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mê Cung Dijkstra Visualizer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!--CSS-->
+  <link rel="stylesheet" href="css/theme-dark.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/theme-dark.css" />
+</head>
+<body>
+  <header>
+    <h1>🧭 Mê Cung Dijkstra Visualizer</h1>
+    <div class="controls">
+      <button id="runBtn"><img src="assets/icons/run.png" alt="">Chạy</button>
+      <button id="resetBtn"><img src="assets/icons/clear.png" alt="">Reset</button>
+      <button id="randomBtn"><img src="assets/icons/wall.png" alt="">Mê cung ngẫu nhiên</button>
+    </div>
+  </header>
+
+  <main>
+    <section id="maze-section">
+      <canvas id="mazeCanvas" width="600" height="400"></canvas>
+      <div id="legend">
+        <div><span class="cell start"></span>Start</div>
+        <div><span class="cell end"></span>End</div>
+        <div><span class="cell wall"></span>Tường</div>
+        <div><span class="cell visited"></span>Đang dò</div>
+        <div><span class="cell path"></span>Đường tối ưu</div>
+      </div>
+    </section>
+
+    <aside id="control-panel">
+      <h3>⚙️Cài đặt</h3>
+      <div class="control-group">
+        <label for="speedRange">Tốc độ: <span id="speedValue">20</span> ms</label>
+        <input type="range" id="speedRange" min="5" max="150" value="20" step="5">
+      </div>
+
+      <div class="control-group">
+        <label for="gridSize">Kích thước :</label>
+        <input type="number" id="rows" min="5" max="50" value="20"> × 
+        <input type="number" id="cols" min="5" max="50" value="35">
+        <button id="applySizeBtn">Áp dụng</button>
+      </div>
+
+      <div id="stats-panel">
+        <h3>📊Kết quả</h3>
+        <div id="stats">Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn <b>Mê cung ngẫu nhiên</b> . Sau đó nhấn <b>Chạy</b>.</div>
+      </div>
+    </aside>
+  </main>
+
+  <footer>
+    <h2>Dijkstra Maze by Ngọc Minh with ChatGPT support</h2>
+  </footer>
+
+  <!--Scripts-->
+  <script src="js/state.js"></script>
+  <script src="js/maze.js"></script>
+  <script src="js/dijkstra.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

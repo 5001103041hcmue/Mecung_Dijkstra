@@ -1,0 +1,204 @@
+/*STYLE.CSS – Giao diện chính */
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--bg-panel);
+  padding: 1rem 2rem;
+  border-bottom: 2px solid var(--border);
+}
+
+header h1 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+/* Buttons */
+.controls button {
+  background: var(--border);
+  color: var(--text);
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-left: 0.6rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.controls button img {
+  width: 18px;
+  height: 18px;
+  margin-right: 6px;
+}
+
+.controls button:hover {
+  background: var(--accent-strong);
+  color: #fff;
+}
+
+/* Layout chính */
+main {
+  display: flex;
+  flex: 1;
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
+#maze-section {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#mazeCanvas {
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-main);
+  box-shadow: 0 0 12px rgba(0,0,0,0.4);
+  cursor: crosshair;
+}
+
+#mazeCanvas:active {
+  cursor: grabbing;
+}
+
+/* Legend */
+#legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+}
+
+#legend div {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.cell {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border-radius: 2px;
+}
+
+.cell.start { background: #10b981; }
+.cell.end { background: #3b82f6; }
+.cell.wall { background: #1e293b; }
+.cell.visited { background: #ef4444; }
+.cell.path { background: #facc15; }
+
+/* Control panel */
+#control-panel {
+  flex: 0.8;
+  background: var(--bg-panel);
+  border-radius: 12px;
+  padding: 1rem;
+  height: fit-content;
+}
+
+#control-panel h3 {
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.control-group {
+  margin-bottom: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+input[type="number"],
+input[type="range"] {
+  background: var(--bg-main);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 0.3rem 0.5rem;
+}
+
+input[type="range"] {
+  width: 150px;
+}
+
+#applySizeBtn {
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  background: var(--border);
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+#applySizeBtn:hover {
+  background: var(--accent-strong);
+}
+
+/* Stats panel */
+#stats-panel {
+  margin-top: 1rem;
+}
+
+#stats {
+  background: var(--bg-main);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.8rem;
+  color: var(--text);
+  font-size: 0.9rem;
+  min-height: 100px;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: var(--bg-panel);
+  border-top: 1px solid var(--border);
+  color: var(--text-dim);
+  padding: 0.8rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  main {
+    flex-direction: column;
+  }
+  #control-panel {
+    width: 100%;
+  }
+  #mazeCanvas {
+    width: 100%;
+    height: auto;
+  }
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
