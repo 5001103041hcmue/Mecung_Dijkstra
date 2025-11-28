@@ -40,11 +40,11 @@ function handleMouseDown(e) {
   // Chuột trái
   if (e.button === 0) {
     handleCellToggle(r, c);
-    paintMode = "draw";    //Kéo giữ chuột trái VẼ tường
+    paintMode = "draw";    //Kéo giữ chuột trái = vẽ tường
   }
   // Chuột phải
   if (e.button === 2) {
-    paintMode = "erase";    //Kéo giữ chuột phải XÓA tường
+    paintMode = "erase";    //Kéo giữ chuột phải= xóa tường
     // Click xóa tuongwf
     if (grid[r][c] === CELL.WALL) {
       grid[r][c] = CELL.EMPTY;
