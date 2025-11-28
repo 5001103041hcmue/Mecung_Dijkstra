@@ -4,7 +4,8 @@ function showMessage(text) {
   statsDiv.innerHTML = text;
 }
 
-function attachUIEvents() {
+function attachUIEvents() 
+{
   document.getElementById("runBtn").addEventListener("click", runDijkstra);
   document.getElementById("resetBtn").addEventListener("click", () => {
     resetMaze();
@@ -34,5 +35,5 @@ function attachUIEvents() {
       resetMaze();
       showMessage(`Kích thước lưới: ${rows}x${cols}`);
     }
-  });
-}
+  })
+};

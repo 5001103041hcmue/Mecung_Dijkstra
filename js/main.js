@@ -32,5 +32,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Giao diện
   attachUIEvents();
-  showMessage("Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn 'Mê cung ngẫu nhiên'. Sau đó nhấn 'Chạy'.");
+  showMessage("Chuột trái: vẽ tường | Chuột phải: xoá tường.<br>Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn 'Mê cung ngẫu nhiên'.<br>Sau đó nhấn 'Chạy'.");
 });

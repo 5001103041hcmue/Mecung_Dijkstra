@@ -1,4 +1,3 @@
-
 // state.js-Quản lý trạng thái 
 const CELL = {
   EMPTY: "empty",

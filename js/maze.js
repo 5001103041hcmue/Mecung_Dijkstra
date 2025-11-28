@@ -2,15 +2,14 @@
 const CELL_SIZE = 24;
 let ctx;
 let isMouseDown = false;
-let paintMode = CELL.WALL;
+let paintMode = null; // vẽ/xóa tường
 
-// Tạo lưới trôngs
 function createGrid(r, c) {
   return Array.from({ length: r }, () =>
     Array.from({ length: c }, () => CELL.EMPTY)
   );
 }
-// Vẽ lại toàn bộ mê cung
+// Vẽ mê cung
 function drawMaze() {
   ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
   for (let r = 0; r < rows; r++) {
@@ -19,55 +18,88 @@ function drawMaze() {
     }
   }
 }
-// Vẽ 1 ô
 function drawCell(r, c, type) {
   const x = c * CELL_SIZE;
   const y = r * CELL_SIZE;
   switch (type) {
-    case CELL.WALL: ctx.fillStyle = "#1e293b"; break;
-    case CELL.START: ctx.fillStyle = "#10b981"; break;
-    case CELL.END: ctx.fillStyle = "#3b82f6"; break;
+    case CELL.WALL:    ctx.fillStyle = "#1e293b"; break;
+    case CELL.START:   ctx.fillStyle = "#10b981"; break;
+    case CELL.END:     ctx.fillStyle = "#3b82f6"; break;
     case CELL.VISITED: ctx.fillStyle = "#ef4444"; break;
-    case CELL.PATH: ctx.fillStyle = "#facc15"; break;
-    default: ctx.fillStyle = "#f8fafc";
-  }
+    case CELL.PATH:    ctx.fillStyle = "#facc15"; break;
+    default:           ctx.fillStyle = "#f8fafc"; }
   ctx.fillRect(x + 1, y + 1, CELL_SIZE - 2, CELL_SIZE - 2);
 }
-// Xử lý click và drag
+//Drag (kéo giữ chuột)
 function handleMouseDown(e) {
   if (running) return;
+  const [r, c] = getCellFromEvent(e);
+  if (r == null) return;
   isMouseDown = true;
-  const [r, c] = getCellFromEvent(e);
-  if (!r && r !== 0) return;
-  handleCellToggle(r, c);
-}
-function handleMouseMove(e) {
-  if (!isMouseDown || running) return;
-  const [r, c] = getCellFromEvent(e);
-  if (!r && r !== 0) return;
-  handleCellToggle(r, c);
+
+  // Chuột trái
+  if (e.button === 0) {
+    handleCellToggle(r, c);
+    paintMode = "draw";    //Kéo giữ chuột trái VẼ tường
+  }
+  // Chuột phải
+  if (e.button === 2) {
+    paintMode = "erase";    //Kéo giữ chuột phải XÓA tường
+    // Click xóa tuongwf
+    if (grid[r][c] === CELL.WALL) {
+      grid[r][c] = CELL.EMPTY;
+      drawCell(r, c, CELL.EMPTY);
+    }
+  }
 }
 
+function handleMouseMove(e) 
+{
+  if (!isMouseDown || running) return;
+
+  const [r, c] = getCellFromEvent(e);
+  if (r == null) return;
+
+  // Né START/END gaa
+  if (grid[r][c] === CELL.START || grid[r][c] === CELL.END) return;
+  // Kéo vẽ tường
+  if (paintMode === "draw" && grid[r][c] !== CELL.WALL) {
+    grid[r][c] = CELL.WALL;
+    drawCell(r, c, CELL.WALL); }
+  // Kéo xóa tường
+  if (paintMode === "erase" && grid[r][c] === CELL.WALL) {
+    grid[r][c] = CELL.EMPTY;
+    drawCell(r, c, CELL.EMPTY); }
+}
 function handleMouseUp() {
   isMouseDown = false;
+  paintMode = null;
 }
-// Toggle 1 ô
+// CLICK toggle
 function handleCellToggle(r, c) {
   const cell = grid[r][c];
-  if (!startCell) {
+  if (!startCell) 
+  {
     startCell = [r, c];
     grid[r][c] = CELL.START;
-  } else if (!endCell && cell !== CELL.START) {
+  }
+  else if (!endCell && cell !== CELL.START)
+  {
     endCell = [r, c];
     grid[r][c] = CELL.END;
-  } else if (cell === CELL.EMPTY) {
+  }
+  else if (cell === CELL.EMPTY) 
+  {
     grid[r][c] = CELL.WALL;
-  } else if (cell === CELL.WALL) {
+  }
+  else if (cell === CELL.WALL) 
+  {
     grid[r][c] = CELL.EMPTY;
   }
-  drawMaze();
+  drawCell(r, c, grid[r][c]);
 }
 
+//Tínhh ô từ tọa độ chuột
 function getCellFromEvent(e) {
   const rect = ctx.canvas.getBoundingClientRect();
   const x = e.clientX - rect.left;
@@ -86,13 +118,11 @@ function randomizeWalls() {
       if (Math.random() < 0.3) grid[r][c] = CELL.WALL;
     }
   }
-  //start/end không đè tường
   if (startCell) grid[startCell[0]][startCell[1]] = CELL.START;
   if (endCell) grid[endCell[0]][endCell[1]] = CELL.END;
   drawMaze();
 }
-
-//Reset
+// Reset
 function resetMaze() {
   running = false;
   grid = createGrid(rows, cols);
@@ -100,13 +130,14 @@ function resetMaze() {
   endCell = null;
   drawMaze();
 }
-// Clear animation
+// Xóa VISITED + PATH
 function clearVisited() {
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (grid[r][c] === CELL.VISITED || grid[r][c] === CELL.PATH)
+      if (grid[r][c] === CELL.VISITED || grid[r][c] === CELL.PATH) {
         grid[r][c] = CELL.EMPTY;
+      }
     }
   }
-  drawMaze();
+  if (running) drawMaze();
 }
