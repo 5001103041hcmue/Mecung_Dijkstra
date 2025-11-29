@@ -99,16 +99,6 @@ function handleCellToggle(r, c) {
   drawCell(r, c, grid[r][c]);
 }
 
-//Tínhh ô từ tọa độ chuột
-function getCellFromEvent(e) {
-  const rect = ctx.canvas.getBoundingClientRect();
-  const x = e.clientX - rect.left;
-  const y = e.clientY - rect.top;
-  const c = Math.floor(x / CELL_SIZE);
-  const r = Math.floor(y / CELL_SIZE);
-  if (r < 0 || r >= rows || c < 0 || c >= cols) return [];
-  return [r, c];
-}
 // Mê cung ngẫu nhiên
 function randomizeWalls() {
   if (running) return;

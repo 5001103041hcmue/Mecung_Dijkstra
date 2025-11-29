@@ -3,9 +3,6 @@ window.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById("mazeCanvas");
   ctx = canvas.getContext("2d");
 
-  //Ti lệ zoom mê cung(1.0 = mặc định, 1.15 = to hơn 15%)
-   //const SCALE = (canvas.width / canvas.clientWidth);
-
   // Cập nhật kích thước canvas
   canvas.width = cols * CELL_SIZE;// * SCALE;
   canvas.height = rows * CELL_SIZE;// * SCALE;
@@ -32,5 +29,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Giao diện
   attachUIEvents();
-  showMessage("Chuột trái: vẽ tường | Chuột phải: xoá tường.<br>Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn 'Mê cung ngẫu nhiên'.<br>Sau đó nhấn 'Chạy'.");
+  showMessage("Chuột trái : vẽ tường | Chuột phải : xoá tường.<br><br>Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn 'Random Maze' (vẽ mê cung ngẫu nhiên).<br><br>Nhấn 'Run' để bắt đầu duyệt.");
 });

@@ -9,8 +9,8 @@ const CELL = {
 };
 
 let grid = [];
-let rows = 20;
-let cols = 35;
+let rows = 22;
+let cols = 38;
 let startCell = null;
 let endCell = null;
 let running = false;

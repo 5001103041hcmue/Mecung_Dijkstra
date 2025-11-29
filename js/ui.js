@@ -38,4 +38,10 @@ function attachUIEvents()
     }
   })
 }
+setInterval(() => {
+  const logo = document.getElementById("fit-logo");
+  logo.classList.add("glow");
+  setTimeout(() => logo.classList.remove("glow"), 600);
+}, 2800);
+
 

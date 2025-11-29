@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 body {
@@ -25,7 +25,7 @@ header {
 }
 
 header h1 {
-  font-size: 1.3rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: var(--text);
 }
@@ -42,6 +42,8 @@ header h1 {
   align-items: center;
   cursor: pointer;
   transition: background 0.2s ease;
+  font-size: 18px !important;
+  font-weight: 600;
 }
 
 .controls button img {
@@ -87,10 +89,12 @@ main {
 #legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
   margin-top: 10px;
   color: var(--text-dim);
-  font-size: 0.9rem;
+  font-size: 1.4rem ;
+  font-weight: 500;
+  color: #fff;
 }
 
 #legend div {
@@ -101,8 +105,8 @@ main {
 
 .cell {
   display: inline-block;
-  width: 14px;
-  height: 14px;
+  width: 21px;
+  height: 21px;
   border-radius: 2px;
 }
 
@@ -119,11 +123,16 @@ main {
   border-radius: 12px;
   padding: 1rem;
   height: fit-content;
-}
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);}
 
 #control-panel h3 {
   color: var(--accent);
   margin-bottom: 0.5rem;
+  font-size: 28px !important;
+  font-weight: 600 !important;
+}
+#control-panel label {
+  margin-left: 1.5rem;
 }
 
 .control-group {
@@ -132,6 +141,8 @@ main {
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
+  font-size: 1.35rem;
+  font-weight: 500;
 }
 
 input[type="number"],
@@ -141,10 +152,11 @@ input[type="range"] {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 0.3rem 0.5rem;
+  font-size: 15px !important;
 }
 
 input[type="range"] {
-  width: 150px;
+  width: 260px;
 }
 
 #applySizeBtn {
@@ -155,6 +167,8 @@ input[type="range"] {
   border: none;
   cursor: pointer;
   transition: background 0.2s;
+  font-size: 15px !important;
+  font-weight: 600;
 }
 
 #applySizeBtn:hover {
@@ -172,8 +186,9 @@ input[type="range"] {
   border-radius: 8px;
   padding: 0.8rem;
   color: var(--text);
-  font-size: 0.9rem;
-  min-height: 100px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  min-height: 180px;
 }
 
 /* Footer */
@@ -183,7 +198,7 @@ footer {
   border-top: 1px solid var(--border);
   color: var(--text-dim);
   padding: 0.8rem;
-  font-size: 0.9rem;
+  font-size: 1.2rem;
 }
 
 /* Responsive */
@@ -200,5 +215,5 @@ footer {
   }
 }
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
