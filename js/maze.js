@@ -40,11 +40,11 @@ function handleMouseDown(e) {
   // Chuột trái
   if (e.button === 0) {
     handleCellToggle(r, c);
-    paintMode = "draw";    //Kéo giữ chuột trái VẼ tường
+    paintMode = "draw";    //Kéo giữ chuộttrái=vẽ tường
   }
   // Chuột phải
   if (e.button === 2) {
-    paintMode = "erase";    //Kéo giữ chuột phải XÓA tường
+    paintMode = "erase";    //Kéo giữ chuột phải= xóa tường
     // Click xóa tuongwf
     if (grid[r][c] === CELL.WALL) {
       grid[r][c] = CELL.EMPTY;
@@ -134,10 +134,26 @@ function resetMaze() {
 function clearVisited() {
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (grid[r][c] === CELL.VISITED || grid[r][c] === CELL.PATH) {
+      if (grid[r][c] === CELL.VISITED|| grid[r][c] === CELL.PATH) 
+      {
         grid[r][c] = CELL.EMPTY;
       }
     }
   }
-  if (running) drawMaze();
+  drawMaze();
 }
+function clearAllExceptWalls() {
+  running = false; 
+  startCell = null;
+  endCell = null;
+  Array.from(grid.flat(), (cell, index) =>     
+  {                                        // Xóa visited,path,start,end 
+    if ( cell === CELL.VISITED || cell === CELL.PATH|| cell === CELL.START ||cell === CELL.END ) 
+    {
+      const r = Math.floor(index/cols);
+      const c = index % cols;
+      grid[r][c] =CELL.EMPTY;
+      drawCell(r, c, CELL.EMPTY);
+    }
+  });}
+

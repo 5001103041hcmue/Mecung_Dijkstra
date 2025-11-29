@@ -7,6 +7,7 @@ function showMessage(text) {
 function attachUIEvents() 
 {
   document.getElementById("runBtn").addEventListener("click", runDijkstra);
+  document.getElementById("clearBtn").addEventListener("click", clearAllExceptWalls);
   document.getElementById("resetBtn").addEventListener("click", () => {
     resetMaze();
     showMessage("Đã reset mê cung.");
@@ -36,4 +37,5 @@ function attachUIEvents()
       showMessage(`Kích thước lưới: ${rows}x${cols}`);
     }
   })
-};
+}
+

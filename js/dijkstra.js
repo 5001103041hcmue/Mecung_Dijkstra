@@ -10,35 +10,32 @@ function getNeighbors(r, c) {
     [r, c + 1],
   ].filter(([nr, nc]) => inBounds(nr, nc));
 }
-
 async function runDijkstra() {
+  if (running) return; // khom cho spam nút Chạy
   if (!startCell || !endCell) {
     showMessage("⚠️ Hãy chọn điểm bắt đầu và kết thúc!");
     return;
   }
-
   running = true;
   clearVisited();
 
-  // âm thanh bắt đầu
-  const startSound = new Audio("assets/sounds/start.mp3");
-  playSound(startSound, 0.6);
-
+  //Reset trạng thái thuật toán
   const dist = Array.from({ length: rows }, () => Array(cols).fill(Infinity));
   const prev = Array.from({ length: rows }, () => Array(cols).fill(null));
   const visited = Array.from({ length: rows }, () => Array(cols).fill(false));
-
+  const pq = [];
   const [sr, sc] = startCell;
   const [er, ec] = endCell;
   dist[sr][sc] = 0;
+  pq.push([0, sr, sc]);
 
-  const pq = [[0, sr, sc]];
+  const startSound = new Audio("assets/sounds/start.mp3");  // âm thanh bắt đầu
+  playSound(startSound, 0.6);
+
   let visitedCount = 0;
-
+  let found = false;
   const clickSound = new Audio("assets/sounds/click.mp3");
   const doneSound = new Audio("assets/sounds/done.mp3");
-
-  let found = false;
 
   //DIJKSTRA
   while (pq.length > 0) {
@@ -77,7 +74,6 @@ async function runDijkstra() {
     showMessage(`❌ Không có đường đi.<br>🧮 Ô đã duyệt: ${visitedCount}`);
     return;
   }
-
   //dựng lại đường đi
   let path = [];
   let cur = [er, ec];
@@ -104,10 +100,12 @@ function sleep(ms) {
   return new Promise(res => setTimeout(res, ms));
 }
 
-function playSound(audio, vol = 0.5) {
-  try {
+function playSound(audio, vol = 0.5)
+{
+  try 
+  {
     audio.currentTime = 0;
     audio.volume = vol;
     audio.play().catch(() => {});
-  } catch {}
+  } catch{}
 }
