@@ -14,4 +14,4 @@ let cols = 38;
 let startCell = null;
 let endCell = null;
 let running = false;
-let speed = 20;
+let speed = 135;
