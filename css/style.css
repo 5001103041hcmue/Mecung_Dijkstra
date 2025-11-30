@@ -123,6 +123,7 @@ main {
   border-radius: 12px;
   padding: 1rem;
   height: fit-content;
+  width: 100%;
   box-shadow: 0 0 12px rgba(0,0,0,0.3);}
 
 #control-panel h3 {
@@ -190,7 +191,6 @@ input[type="range"] {
   font-weight: 500;
   min-height: 180px;
 }
-
 /* Footer */
 footer {
   text-align: center;
@@ -200,8 +200,6 @@ footer {
   padding: 0.8rem;
   font-size: 1.2rem;
 }
-
-/* Responsive */
 @media (max-width: 900px) {
   main {
     flex-direction: column;
@@ -216,4 +214,35 @@ footer {
 }
 body {
   font-family: "Roboto", sans-serif;
+}
+.matrix-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+    margin-top: 12px;
+    padding-right: 0px;
+    gap: 170px;
+}
+.matrix-buttons button {
+    background: var(--border);
+    color: var(--text);
+    border: none;
+    padding: 0.55rem 0.8rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: 0.2s;
+}
+.matrix-buttons button img {
+    width: 25px;
+    height: 25px;
+}
+.matrix-buttons button:hover {
+    background: var(--accent-strong);
+    color: white;
 }

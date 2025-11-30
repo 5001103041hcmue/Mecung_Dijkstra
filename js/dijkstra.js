@@ -107,5 +107,5 @@ function playSound(audio, vol = 0.5)
     audio.currentTime = 0;
     audio.volume = vol;
     audio.play().catch(() => {});
-  } catch{}
+  } catch(e){}
 }
