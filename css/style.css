@@ -47,8 +47,8 @@ header h1 {
 }
 
 .controls button img {
-  width: 18px;
-  height: 18px;
+  width: 23px;
+  height: 23px;
   margin-right: 6px;
 }
 
@@ -222,7 +222,7 @@ body {
     width: 100%;
     margin-top: 12px;
     padding-right: 0px;
-    gap: 170px;
+    gap: 130px;
 }
 .matrix-buttons button {
     background: var(--border);
@@ -231,7 +231,7 @@ body {
     padding: 0.55rem 0.8rem;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 17px;
+    font-size: 19px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
@@ -239,8 +239,8 @@ body {
     transition: 0.2s;
 }
 .matrix-buttons button img {
-    width: 25px;
-    height: 25px;
+    width: 30px;
+    height: 30px;
 }
 .matrix-buttons button:hover {
     background: var(--accent-strong);
