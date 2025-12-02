@@ -20,8 +20,7 @@ function drawMaze() {
 }
 function drawCell(r, c, type) {
   const x = c * CELL_SIZE;
-  const y = r * CELL_SIZE;
-  switch (type) {
+  const y = r * CELL_SIZE;  switch (type) {
     case CELL.WALL:    ctx.fillStyle = "#1e293b"; break;
     case CELL.START:   ctx.fillStyle = "#10b981"; break;
     case CELL.END:     ctx.fillStyle = "#3b82f6"; break;

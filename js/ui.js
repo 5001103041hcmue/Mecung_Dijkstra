@@ -63,11 +63,11 @@ function attachUIEvents() {
     ctx.canvas.height = rows * CELL_SIZE;
 
     drawMaze();
-    showMessage("📥 Đã nhập mê cung từ ma trận kề.");
+    showMessage(`📥 Đã vẽ mê cung từ file ma trận kề:  <b>${file.name}</b>`);
+    e.target.value = "";
   });
   //  NÚT XUẤT MA TRẬN
   document.getElementById("exportMatBtn").addEventListener("click", () => {
-
     let text = "";
     for (let r = 0; r < rows; r++) {
       text += grid[r].map(cell => (cell === CELL.WALL ? 1 : 0)).join(" ") + "\n";
