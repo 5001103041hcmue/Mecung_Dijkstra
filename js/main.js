@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
     const y = (e.clientY - rect.top)*(canvas.height / rect.height);
     const c = Math.floor(x / CELL_SIZE);
     const r = Math.floor(y / CELL_SIZE);
-    if (r < 0 || r >= rows || c < 0 || c >= cols) return [];
+    if (!inBounds(r,c)) return [];
     return [r, c];
   };
 
@@ -29,5 +29,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Giao diện
   attachUIEvents();
-  showMessage("Chuột trái : vẽ tường | Chuột phải : xoá tường.<br><br>Chọn điểm bắt đầu, kết thúc và vẽ tường hoặc chọn 'Random Maze' (vẽ mê cung ngẫu nhiên).<br><br>Nhấn 'Run' để bắt đầu duyệt.");
+  showMessage("Kéo giữ chuột trái : vẽ tường | Chuột phải : xoá tường.<br><br>Chọn điểm bắt đầu và kết thúc.<br>Mê cung: vẽ tường bằng chuột hoặc chọn 'Random Maze' (vẽ mê cung ngẫu nhiên) / 'Nhập ma trận kề'.<br><br>Nhấn 'Run' để bắt đầu duyệt.");
 });

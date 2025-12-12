@@ -1,6 +1,6 @@
 // maze.js - Tạo, vẽ và tương tác mê cung
-const CELL_SIZE = 24;
-let ctx;
+var CELL_SIZE = 24;
+//let ctx;
 let isMouseDown = false;
 let paintMode = null; // vẽ/xóa tường
 
@@ -44,7 +44,7 @@ function handleMouseDown(e) {
   // Chuột phải
   if (e.button === 2) {
     paintMode = "erase";    //Kéo giữ chuột phải= xóa tường
-    // Click xóa tuongwf
+    // Click xóa 
     if (grid[r][c] === CELL.WALL) {
       grid[r][c] = CELL.EMPTY;
       drawCell(r, c, CELL.EMPTY);
@@ -59,7 +59,7 @@ function handleMouseMove(e)
   const [r, c] = getCellFromEvent(e);
   if (r == null) return;
 
-  // Né START/END gaa
+  // Né START/END 
   if (grid[r][c] === CELL.START || grid[r][c] === CELL.END) return;
   // Kéo vẽ tường
   if (paintMode === "draw" && grid[r][c] !== CELL.WALL) {
@@ -119,30 +119,26 @@ function resetMaze() {
   endCell = null;
   drawMaze();
 }
-// Xóa VISITED + PATH
-function clearVisited() {
+//Hàm xóa ô
+function clearCells(predicate) {            
   for (let r = 0; r < rows; r++) {
     for (let c = 0; c < cols; c++) {
-      if (grid[r][c] === CELL.VISITED|| grid[r][c] === CELL.PATH) 
-      {
+      if (predicate(grid[r][c])) {
         grid[r][c] = CELL.EMPTY;
       }
     }
   }
   drawMaze();
 }
-function clearAllExceptWalls() {
-  running = false; 
+
+function clearVisited() {                    // Xóa VISITED + PATH
+  clearCells(cell => cell === CELL.VISITED || cell === CELL.PATH);
+}
+
+function clearAllExceptWalls() {             // Xóa tất cả trừ tường
+  running = false;
   startCell = null;
   endCell = null;
-  Array.from(grid.flat(), (cell, index) =>     
-  {                                        // Xóa visited,path,start,end 
-    if ( cell === CELL.VISITED || cell === CELL.PATH|| cell === CELL.START ||cell === CELL.END ) 
-    {
-      const r = Math.floor(index/cols);
-      const c = index % cols;
-      grid[r][c] =CELL.EMPTY;
-      drawCell(r, c, CELL.EMPTY);
-    }
-  });}
+  clearCells(cell =>cell === CELL.VISITED ||cell === CELL.PATH ||cell === CELL.START ||cell === CELL.END );
+}
 

@@ -28,7 +28,6 @@ function attachUIEvents() {
     if (r && c && r > 4 && c > 4) {
       rows = r;
       cols = c;
-      grid = createGrid(rows, cols);
       ctx.canvas.width = cols * CELL_SIZE;
       ctx.canvas.height = rows * CELL_SIZE;
       resetMaze(); 

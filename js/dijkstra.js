@@ -11,7 +11,7 @@ function getNeighbors(r, c) {
   ].filter(([nr, nc]) => inBounds(nr, nc));
 }
 async function runDijkstra() {
-  if (running) return; // khom cho spam nút Chạy
+  if (running) return; // không spam nút Chạy nhiều lần
   if (!startCell || !endCell) {
     showMessage("⚠️ Hãy chọn điểm bắt đầu và kết thúc!");
     return;
@@ -29,14 +29,12 @@ async function runDijkstra() {
   dist[sr][sc] = 0;
   pq.push([0, sr, sc]);
 
+  const doneSound = new Audio("assets/sounds/done.mp3");    // âm thanh hoàn thành
   const startSound = new Audio("assets/sounds/start.mp3");  // âm thanh bắt đầu
   playSound(startSound, 0.6);
 
   let visitedCount = 0;
   let found = false;
-  const clickSound = new Audio("assets/sounds/click.mp3");
-  const doneSound = new Audio("assets/sounds/done.mp3");
-
   //DIJKSTRA
   while (pq.length > 0) {
     if (!running) return; 
@@ -49,7 +47,6 @@ async function runDijkstra() {
     if (!(r === sr && c === sc) && !(r === er && c === ec)) {
       grid[r][c] = CELL.VISITED;
       drawCell(r, c, CELL.VISITED);
-      playSound(clickSound, 0.3);
       await sleep(speed);
     }
     if (r === er && c === ec) {
