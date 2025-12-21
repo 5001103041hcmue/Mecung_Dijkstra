@@ -29,5 +29,5 @@ window.addEventListener("DOMContentLoaded", () => {
 
   //Giao diện
   attachUIEvents();
-  showMessage("Kéo giữ chuột trái : vẽ tường | Chuột phải : xoá tường.<br><br>Chọn điểm bắt đầu và kết thúc.<br>Mê cung: vẽ tường bằng chuột hoặc chọn 'Random Maze' (vẽ mê cung ngẫu nhiên) / 'Nhập ma trận kề'.<br><br>Nhấn 'Run' để bắt đầu duyệt.");
+  showMessage("Kéo giữ chuột trái : vẽ tường | Chuột phải : xoá tường.<br><br>Chọn điểm bắt đầu và kết thúc.<br>Mê cung: vẽ tường bằng chuột hoặc chọn 'Random Maze' (vẽ mê cung ngẫu nhiên) / 'Nhập ma trận nhị phân'.<br><br>Nhấn 'Run' để bắt đầu duyệt.");
 });

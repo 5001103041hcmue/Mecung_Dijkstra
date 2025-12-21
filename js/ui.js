@@ -42,7 +42,7 @@ function attachUIEvents() {
     const file = e.target.files[0];
     if (!file) return;
     const text = await file.text();
-    // Phân tích file thành ma trận kề
+    // Phân tích file thành ma trận nhị phân
     const matrix = text
       .trim()
       .split("\n")
@@ -62,7 +62,7 @@ function attachUIEvents() {
     ctx.canvas.height = rows * CELL_SIZE;
 
     drawMaze();
-    showMessage(`📥 Đã vẽ mê cung từ file ma trận kề:  <b>${file.name}</b>`);
+    showMessage(`📥 Đã vẽ mê cung từ file ma trận nhị phân:  <b>${file.name}</b>`);
     e.target.value = "";
   });
   //  NÚT XUẤT MA TRẬN
@@ -78,7 +78,7 @@ function attachUIEvents() {
     a.download = "matrix.txt";
     a.click();
     URL.revokeObjectURL(url);
-    showMessage("📤 Đã xuất mê cung thành file ma trận kề.");
+    showMessage("📤 Đã xuất mê cung thành file ma trận nhị phân.");
   });
 }
 // Fit Logo effect
