@@ -4,8 +4,8 @@ window.addEventListener("DOMContentLoaded", () => {
   ctx = canvas.getContext("2d");
 
   // Cập nhật kích thước canvas
-  canvas.width = cols * CELL_SIZE;// * SCALE;
-  canvas.height = rows * CELL_SIZE;// * SCALE;
+  canvas.width = cols * CELL_SIZE;
+  canvas.height = rows * CELL_SIZE;
   window.getCellFromEvent = function (e) {
     const rect = canvas.getBoundingClientRect();
     // Tính chính xác toạ độ chuột theo scale
